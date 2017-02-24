@@ -1,0 +1,75 @@
+.center {
+    margin: auto;
+    width: 50%;
+    border: 10px solid #996600;
+    padding: 30px;
+    background-image: url("../images/eeveelution.jpg");
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#answer{
+	text-align: center;
+	font-size: 40px;
+	color: #404040;
+	word-spacing: 10px;
+	background-color:#ffd480;
+
+	
+}
+
+
+#h1{
+	text-align: center;
+	font-size: 60px;
+	font-style: bold;
+	color: #ffd480;
+	background-color: #996600 ;
+}
+
+.monitor{
+	text-align: center;
+	font-style: bold;
+	font-size: 40px;
+	color: #ffd480;
+	text-shadow: 2px 2px 5px #996600;
+
+}
+
+#wins{
+	text-align: center;
+	font-size: 25px ;
+	font-style: bold;
+	color: white;
+	
+
+}
+
+
+
+#lives{
+	text-align: center;
+	font-size: 25px ;
+	font-style: bold;
+	color: white;
+
+
+}
+
+
+#wrong{
+	text-align: center;
+	font-size: 25px;
+	font-style: bold;
+	color: white;
+	
+
+
+}
+
+p{
+	text-align: center;
+}
+
+#picture{
+	text-align: center;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <title> Hangman </title>
+</head>
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<script type="text/javascript">
+
+
+var pokemon = [ "flareon", "glaceon", "sylveon" , "umbreon" , "espeon" ,"leafeon", "vaporeon", "jolteon"];
+
+
+var currentWord = pokemon[Math.floor(Math.random() * pokemon.length)];
+
+var wrongGuesses = [];
+
+var masked = [];
+
+var string;
+
+var lives = 8
+
+var wins = 0
+
+
+	function startUp(){
+		// shows the masked word 
+		for (var i = 0; i < currentWord.length; i++) {
+
+		masked[i] = "_";
+
+		}
+
+
+		
+		string = masked.join(" ");
+		document.getElementById("answer").innerHTML = string;
+		document.getElementById("lives").innerHTML = lives;
+		document.getElementById("wins").innerHTML = wins;
+
+
+	}
+
+	// if a letter is pressed it triggers the following
+
+	document.onkeydown = function(event) {
+		var userGuess = event.key;
+
+
+		if (wrongGuesses.includes(userGuess) == false){
+
+			if (currentWord.includes(userGuess) == false) {
+				
+				wrongGuesses.push(userGuess);
+				wrongGuesses.toString()
+				lives-- ;
+			}
+		}
+
+		for (var i = 0; i < currentWord.length; i++) {
+
+
+			if (currentWord[i] === userGuess){
+				masked[i] = userGuess;
+				
+			}
+
+		} 
+
+		// win condition + reset
+
+		if (masked.includes("_") == false ) {
+			//+ 1 win
+			wins++ ;
+
+
+				if (currentWord === "flareon") {
+					document.getElementById("picture").src = "assets/images/flareon.png";
+					document.getElementById("audio").src = "assets/audio/flareon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#ff6600"
+				}
+
+				if (currentWord === "glaceon") {
+					document.getElementById("picture").src = "assets/images/glaceon.png";
+					document.getElementById("audio").src = "assets/audio/glaceon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#99ccff"
+				}
+
+				if (currentWord === "sylveon") {
+					document.getElementById("picture").src = "assets/images/sylveon.png";
+					document.getElementById("audio").src = "assets/audio/sylveon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#ff6666"
+				}
+
+				if (currentWord === "umbreon") {
+					document.getElementById("picture").src = "assets/images/umbreon.png";
+					document.getElementById("audio").src = "assets/audio/umbreon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#333333"
+				}
+
+				if (currentWord === "espeon") {
+					document.getElementById("picture").src = "assets/images/espeon.png";
+					document.getElementById("audio").src = "assets/audio/espeon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#cc66ff"
+				}
+
+				if (currentWord === "leafeon") {
+					document.getElementById("picture").src = "assets/images/leafeon.png";
+					document.getElementById("audio").src = "assets/audio/leafeon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#99ff99"
+				}
+
+				if (currentWord === "vaporeon") {
+					document.getElementById("picture").src = "assets/images/vaporeon.png";
+					document.getElementById("audio").src = "assets/audio/vaporeon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#3399ff"
+				}
+
+				if (currentWord === "jolteon") {
+					document.getElementById("picture").src = "assets/images/jolteon.png";
+					document.getElementById("audio").src = "assets/audio/jolteon.mp3";
+					document.getElementById("answer").style.backgroundColor = "#ffff66"
+				}
+
+
+				// //reset current word
+				currentWord = pokemon[Math.floor(Math.random() * pokemon.length)];
+
+
+				//clear the word
+				for (var i = 0; i < currentWord.length; i++) {
+					masked[i] = "_";
+				}
+
+				masked.length = currentWord.length
+
+				// reset lives
+				lives = 8
+
+				// wrong guesses reset
+				wrongGuesses = []
+		}
+
+
+		// lose condition
+
+		if ( lives === 0) {
+			alert("Try Again!")
+			lives = 8
+			masked = []
+			currentWord = pokemon[Math.floor(Math.random() * pokemon.length)];
+			for (var i = 0; i < currentWord.length; i++) {
+					masked[i] = "_";
+			}
+			wrongGuesses = []
+		}
+
+
+		
+		document.getElementById("answer").innerHTML = masked.join(" ")
+		document.getElementById("lives").innerHTML = lives;
+		document.getElementById("wins").innerHTML = wins;
+		document.getElementById("wrong").innerHTML = wrongGuesses.toString();
+
+
+	}	
+
+			
+	          
+</script>
+
+<body class="center" onload="startUp()">
+<h1 id="h1"> ~ EEVEELUTION ~ </h1>
+<div id="answer"></div>
+<br>
+<div class="monitor"> Wins: <div id="wins"></div> </div>
+<br>
+<div class="monitor">Lives: <div id="lives"></div></div>
+<br>
+<div class="monitor">Wrong Guesses: <div id="wrong"></div></div>
+<br>
+<p><img src="assets/images/eevee.png" id="picture"></p>
+
+<audio autoplay src="assets/audio/eevee.mp3" id="audio" type="audio/mp3">
+</audio>
+
+
+
+</body>
+
+
+</html>
